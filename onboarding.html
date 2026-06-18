@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Hope – Get Started</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:    #2563eb;
+      --blue-dk: #1e3a8a;
+      --blue-lt: #60a5fa;
+      --red:     #ef4444;
+      --green:   #10b981;
+      --purple:  #8b5cf6;
+      --bg:      #f0f4ff;
+      --card-bg: #ffffff;
+      --text:    #1e293b;
+      --muted:   #64748b;
+      --radius:  16px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Animated background blobs */
+    .blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.18;
+      animation: blobFloat 8s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .blob-1 { width: 500px; height: 500px; background: #2563eb; top: -120px; left: -120px; animation-delay: 0s; }
+    .blob-2 { width: 400px; height: 400px; background: #ef4444; bottom: -100px; right: -80px; animation-delay: 3s; }
+    .blob-3 { width: 300px; height: 300px; background: #8b5cf6; top: 50%; left: 50%; animation-delay: 1.5s; }
+
+    @keyframes blobFloat {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(30px, 20px) scale(1.05); }
+    }
+
+    /* ── Main container ── */
+    .onboarding-wrapper {
+      position: relative; z-index: 1;
+      width: 100%; max-width: 520px;
+      padding: 1.5rem;
+    }
+
+    /* Logo bar */
+    .logo-bar {
+      display: flex; align-items: center; gap: 0.5rem;
+      justify-content: center; margin-bottom: 2rem;
+    }
+    .logo-bar .heart { font-size: 2rem; animation: heartbeat 1.4s ease-in-out infinite; }
+    @keyframes heartbeat {
+      0%,100% { transform: scale(1); }
+      14%      { transform: scale(1.25); }
+      28%      { transform: scale(1); }
+      42%      { transform: scale(1.15); }
+    }
+    .logo-bar span { font-size: 1.5rem; font-weight: 800; color: var(--blue-dk); letter-spacing: -0.5px; }
+
+    /* ── Slide container ── */
+    .slides-track {
+      display: flex;
+      width: 200%;
+      transition: transform 0.55s cubic-bezier(0.77,0,0.175,1);
+    }
+    .slide {
+      width: 50%;
+      min-width: 50%;
+    }
+
+    .slide-card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 20px 60px rgba(37,99,235,0.12), 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    .slide-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--blue);
+      background: #eff6ff; padding: 0.3rem 0.8rem;
+      border-radius: 999px; margin-bottom: 1rem;
+    }
+
+    .slide-title {
+      font-size: 1.75rem; font-weight: 800; color: var(--text);
+      line-height: 1.2; margin-bottom: 0.5rem;
+    }
+    .slide-title span { color: var(--blue); }
+
+    .slide-sub {
+      font-size: 0.9rem; color: var(--muted); margin-bottom: 1.75rem; line-height: 1.6;
+    }
+
+    /* ── Progress dots ── */
+    .progress-dots {
+      display: flex; gap: 0.4rem; justify-content: center; margin-bottom: 1.5rem;
+    }
+    .dot {
+      width: 8px; height: 8px; border-radius: 999px;
+      background: #dbeafe; transition: all 0.35s ease;
+    }
+    .dot.active { width: 28px; background: var(--blue); }
+
+    /* ── Language Grid ── */
+    .lang-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .lang-card {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.9rem 1rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: #f8fafc;
+      position: relative;
+      overflow: hidden;
+    }
+    .lang-card:hover {
+      border-color: var(--blue-lt);
+      background: #eff6ff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(37,99,235,0.1);
+    }
+    .lang-card.selected {
+      border-color: var(--blue);
+      background: #eff6ff;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+    }
+    .lang-card.selected::after {
+      content: '✓';
+      position: absolute; top: 6px; right: 8px;
+      font-size: 0.7rem; font-weight: 800;
+      color: var(--blue);
+      background: #bfdbfe; border-radius: 50%;
+      width: 16px; height: 16px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lang-flag { font-size: 1.6rem; }
+    .lang-info { display: flex; flex-direction: column; }
+    .lang-name { font-size: 0.9rem; font-weight: 700; color: var(--text); }
+    .lang-native { font-size: 0.75rem; color: var(--muted); }
+
+    /* ── Role Cards ── */
+    .roles-list {
+      display: flex; flex-direction: column; gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .role-card {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1.1rem 1.25rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.22s ease;
+      background: #f8fafc;
+      position: relative;
+      overflow: hidden;
+    }
+    .role-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--role-color, var(--blue));
+      opacity: 0;
+      transition: opacity 0.22s;
+    }
+    .role-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.09); }
+    .role-card:hover::before { opacity: 0.05; }
+    .role-card.selected { border-color: var(--role-color, var(--blue)); background: #fff; box-shadow: 0 0 0 3px color-mix(in srgb, var(--role-color) 20%, transparent); }
+    .role-card.selected::before { opacity: 0.08; }
+
+    .role-icon-wrap {
+      width: 50px; height: 50px; border-radius: 14px;
+      background: color-mix(in srgb, var(--role-color, var(--blue)) 15%, white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; flex-shrink: 0;
+      position: relative; z-index: 1;
+    }
+    .role-body { flex: 1; position: relative; z-index: 1; }
+    .role-label { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+    .role-desc  { font-size: 0.78rem; color: var(--muted); line-height: 1.4; }
+    .role-check {
+      width: 22px; height: 22px; border-radius: 50%;
+      border: 2px solid #cbd5e1;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; color: transparent;
+      transition: all 0.2s; flex-shrink: 0;
+      position: relative; z-index: 1;
+    }
+    .role-card.selected .role-check {
+      background: var(--role-color, var(--blue));
+      border-color: var(--role-color, var(--blue));
+      color: #fff;
+    }
+
+    /* ── Buttons ── */
+    .btn-primary {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      width: 100%; padding: 0.95rem;
+      background: linear-gradient(135deg, var(--blue), var(--blue-dk));
+      color: #fff; font-weight: 700; font-size: 1rem;
+      border: none; border-radius: 12px; cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 15px rgba(37,99,235,0.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37,99,235,0.45); }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .btn-back {
+      display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+      width: 100%; padding: 0.75rem;
+      background: none; color: var(--muted); font-weight: 600; font-size: 0.9rem;
+      border: none; cursor: pointer; margin-top: 0.75rem;
+      transition: color 0.2s;
+    }
+    .btn-back:hover { color: var(--blue); }
+
+    /* Step indicator */
+    .step-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+    .step-text { font-size: 0.78rem; color: var(--muted); font-weight: 600; }
+    .step-progress {
+      flex: 1; height: 4px; background: #e2e8f0; border-radius: 999px;
+      margin: 0 0.75rem; overflow: hidden;
+    }
+    .step-fill {
+      height: 100%; background: linear-gradient(90deg, var(--blue), var(--blue-lt));
+      border-radius: 999px;
+      transition: width 0.55s cubic-bezier(0.77,0,0.175,1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <div class="onboarding-wrapper">
+
+    <!-- Logo -->
+    <div class="logo-bar">
+      <span class="heart">❤️</span>
+      <span>Life Hope</span>
+    </div>
+
+    <!-- Progress -->
+    <div class="step-bar">
+      <span class="step-text" id="step-label">Step 1 of 2</span>
+      <div class="step-progress"><div class="step-fill" id="step-fill" style="width:50%"></div></div>
+      <span class="step-text" id="step-pct">50%</span>
+    </div>
+
+    <!-- Progress dots -->
+    <div class="progress-dots">
+      <div class="dot active" id="dot-1"></div>
+      <div class="dot" id="dot-2"></div>
+    </div>
+
+    <!-- Slides track (overflow hidden wrapper) -->
+    <div style="overflow:hidden; border-radius:24px;">
+      <div class="slides-track" id="slides-track">
+
+        <!-- ══ SLIDE 1 : LANGUAGE ══ -->
+        <div class="slide">
+          <div class="slide-card">
+            <div class="slide-badge">🌐 Step 1</div>
+            <h1 class="slide-title">Choose Your <span>Language</span></h1>
+            <p class="slide-sub">Select the language you're most comfortable with. You can change this anytime in settings.</p>
+
+            <div class="lang-grid" id="lang-grid">
+
+              <div class="lang-card selected" data-lang="en" onclick="selectLang(this)">
+                <span class="lang-flag">🇬🇧</span>
+                <div class="lang-info">
+                  <span class="lang-name">English</span>
+                  <span class="lang-native">English</span>
+                </div>
+              </div>
+
+              <div class="lang-card" data-lang="hi" onclick="selectLang(this)">
+                <span class="lang-flag">🇮🇳</span>
+                <div class="lang-info">
+                  <span class="lang-name">Hindi</span>
+                  <span class="lang-native">हिन्दी</span>
+                </div>
+              </div>
+
+              <div class="lang-card" data-lang="ta" onclick="selectLang(this)">
+                <span class="lang-flag">🇮🇳</span>
+                <div class="lang-info">
+                  <span class="lang-name">Tamil</span>
+                  <span class="lang-native">தமிழ்</span>
+                </div>
+              </div>
+
+              <div class="lang-card" data-lang="te" onclick="selectLang(this)">
+                <span class="lang-flag">🇮🇳</span>
+                <div class="lang-info">
+                  <span class="lang-name">Telugu</span>
+                  <span class="lang-native">తెలుగు</span>
+                </div>
+              </div>
+
+              <div class="lang-card" data-lang="kn" onclick="selectLang(this)">
+                <span class="lang-flag">🇮🇳</span>
+                <div class="lang-info">
+                  <span class="lang-name">Kannada</span>
+                  <span class="lang-native">ಕನ್ನಡ</span>
+                </div>
+              </div>
+
+              <div class="lang-card" data-lang="ml" onclick="selectLang(this)">
+                <span class="lang-flag">🇮🇳</span>
+                <div class="lang-info">
+                  <span class="lang-name">Malayalam</span>
+                  <span class="lang-native">മലയാളം</span>
+                </div>
+              </div>
+
+              <div class="lang-card" data-lang="mr" onclick="selectLang(this)">
+                <span class="lang-flag">🇮🇳</span>
+                <div class="lang-info">
+                  <span class="lang-name">Marathi</span>
+                  <span class="lang-native">मराठी</span>
+                </div>
+              </div>
+
+              <div class="lang-card" data-lang="bn" onclick="selectLang(this)">
+                <span class="lang-flag">🇧🇩</span>
+                <div class="lang-info">
+                  <span class="lang-name">Bengali</span>
+                  <span class="lang-native">বাংলা</span>
+                </div>
+              </div>
+
+            </div>
+
+            <button class="btn-primary" id="btn-lang-next" onclick="goToSlide2()">
+              Continue &nbsp;→
+            </button>
+          </div>
+        </div>
+
+        <!-- ══ SLIDE 2 : ROLE ══ -->
+        <div class="slide">
+          <div class="slide-card">
+            <div class="slide-badge">👤 Step 2</div>
+            <h1 class="slide-title">Who Are <span>You?</span></h1>
+            <p class="slide-sub">Select your role so we can tailor your experience. You can only have one active role.</p>
+
+            <div class="roles-list" id="roles-list">
+
+              <div class="role-card" style="--role-color:#ef4444;" data-role="donor" onclick="selectRole(this)">
+                <div class="role-icon-wrap">🩸</div>
+                <div class="role-body">
+                  <div class="role-label">Donor</div>
+                  <div class="role-desc">Register as an organ or blood donor and access exclusive benefits.</div>
+                </div>
+                <div class="role-check">✓</div>
+              </div>
+
+              <div class="role-card" style="--role-color:#2563eb;" data-role="hospital" onclick="selectRole(this)">
+                <div class="role-icon-wrap">🏥</div>
+                <div class="role-body">
+                  <div class="role-label">Hospital</div>
+                  <div class="role-desc">Manage transplant requests, donor matching, and patient records.</div>
+                </div>
+                <div class="role-check">✓</div>
+              </div>
+
+              <div class="role-card" style="--role-color:#8b5cf6;" data-role="admin" onclick="selectRole(this)">
+                <div class="role-icon-wrap">⚙️</div>
+                <div class="role-body">
+                  <div class="role-label">Admin</div>
+                  <div class="role-desc">Oversee the platform, manage users, hospitals, and system settings.</div>
+                </div>
+                <div class="role-check">✓</div>
+              </div>
+
+            </div>
+
+            <button class="btn-primary" id="btn-role-go" onclick="proceedToRole()" disabled>
+              Get Started &nbsp;🚀
+            </button>
+            <button class="btn-back" onclick="goToSlide1()">← Back</button>
+            <p class="tagline" style="text-align: center; margin-top: 1rem; font-size: 0.9rem;">
+              Already have an account? <a href="login.html" style="color: var(--blue); font-weight: 700; text-decoration: none;">Log In</a>
+            </p>
+          </div>
+        </div>
+
+      </div><!-- end slides-track -->
+    </div><!-- end overflow wrapper -->
+
+  </div><!-- end onboarding-wrapper -->
+
+  <script>
+    let selectedLang = 'en';
+    let selectedRole = null;
+    let currentSlide = 0;
+
+    /* ── Language selection ── */
+    function selectLang(el) {
+      document.querySelectorAll('.lang-card').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedLang = el.dataset.lang;
+      localStorage.setItem('lh_lang', selectedLang);
+    }
+
+    /* ── Role selection ── */
+    function selectRole(el) {
+      document.querySelectorAll('.role-card').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedRole = el.dataset.role;
+      document.getElementById('btn-role-go').disabled = false;
+    }
+
+    /* ── Slide navigation ── */
+    function goToSlide2() {
+      currentSlide = 1;
+      document.getElementById('slides-track').style.transform = 'translateX(-50%)';
+      setProgress(2);
+    }
+
+    function goToSlide1() {
+      currentSlide = 0;
+      document.getElementById('slides-track').style.transform = 'translateX(0)';
+      setProgress(1);
+    }
+
+    function setProgress(step) {
+      const pct = step === 1 ? 50 : 100;
+      document.getElementById('step-fill').style.width = pct + '%';
+      document.getElementById('step-label').textContent = `Step ${step} of 2`;
+      document.getElementById('step-pct').textContent = pct + '%';
+      document.getElementById('dot-1').classList.toggle('active', step >= 1);
+      document.getElementById('dot-2').classList.toggle('active', step >= 2);
+    }
+
+    /* ── Final proceed ── */
+    function proceedToRole() {
+      if (!selectedRole) return;
+      localStorage.setItem('lh_role', selectedRole);
+      localStorage.setItem('lh_lang', selectedLang);
+
+      const btn = document.getElementById('btn-role-go');
+      btn.textContent = 'Redirecting…';
+      btn.disabled = true;
+
+      const routes = {
+        donor:    'signup.html',
+        hospital: 'signup.html',
+        admin:    'login.html'
+      };
+      setTimeout(() => {
+        window.location.href = routes[selectedRole] || 'login.html';
+      }, 800);
+    }
+  </script>
+
+</body>
+</html>

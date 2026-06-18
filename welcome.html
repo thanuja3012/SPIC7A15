@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Hope – Welcome</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var(--bg-primary, #ffffff);
+      font-family: var(--font-sans, 'Inter', sans-serif);
+    }
+    .heart {
+      width: 120px;
+      height: 110px;
+      position: relative;
+    }
+    .heart:before,
+    .heart:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 60px;
+      height: 100px;
+      background: #2563eb;
+      border-radius: 60px 60px 0 0;
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+      animation: beat 1s infinite ease-in-out;
+    }
+    .heart:after {
+      left: 60px;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+    }
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    .cta {
+      margin-top: 2rem;
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      background: var(--color-primary, #0052cc);
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    .cta:hover { background: var(--color-primary-dark, #0747a6); }
+  </style>
+</head>
+<body>
+  <div class="heart"></div>
+  <a href="login.html" class="cta">Proceed to Login / Register</a>
+</body>
+</html>

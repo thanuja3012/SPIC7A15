@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Hope – Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script type="module" src="auth.js"></script>
+</head>
+<body>
+  <div class="hero-container bg-illustration">
+    <div class="glass fade-in">
+      <h1 class="app-title">Welcome Back</h1>
+      <img src="assets/red_heart_logo.png" alt="Life Hope" class="logo heartbeat">
+      <form id="login-form" action="#" method="POST">
+        <input type="email" name="email" placeholder="Email address" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <button type="submit" class="login-button">Log In</button>
+      </form>
+      <p class="tagline" style="margin-top:1rem;">
+        Don't have an account? <a href="onboarding.html" class="cta-button" style="background:none;color:var(--color-primary);">Sign Up</a>
+      </p>
+      <p class="tagline" style="margin-top:1rem;">
+        <a href="forgot.html" class="cta-button" style="background:none;color:var(--color-primary);">Forgot Password?</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

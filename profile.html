@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Hope – My Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { background: #f0f4ff; }
+    .nav { display:flex; justify-content:space-between; align-items:center; padding:1.5rem 3rem; background:#fff; box-shadow:0 2px 8px rgba(0,0,0,0.05); }
+    .nav-brand { font-size:1.5rem; font-weight:700; color:var(--color-primary); display:flex; align-items:center; gap:0.5rem; }
+    .nav-brand img { width:30px; }
+    .nav-links a { margin-left:1.5rem; font-weight:600; transition:color 0.2s; }
+    .nav-links a:hover { color:var(--color-primary); }
+    
+    .profile-container { max-width:800px; margin: 3rem auto; background:#fff; padding:3.5rem; border-radius:var(--radius); box-shadow:0 8px 32px rgba(0,0,0,0.06); }
+    .profile-header { display:flex; align-items:center; gap:2rem; margin-bottom:2.5rem; padding-bottom:2rem; border-bottom:2px dashed #eee; }
+    .avatar { width:110px; height:110px; border-radius:50%; background:var(--color-primary); color:#fff; display:flex; justify-content:center; align-items:center; font-size:3.5rem; font-weight:700; box-shadow:0 4px 12px rgba(37,99,235,0.3); }
+    
+    .form-group { margin-bottom:1.8rem; }
+    .form-group label { display:block; font-weight:600; margin-bottom:0.6rem; color:var(--color-text); font-size:0.95rem; }
+    .form-group input, .form-group select { width:100%; padding:0.9rem 1.2rem; border:1px solid #ddd; border-radius:8px; font-family:inherit; font-size:1rem; outline:none; transition:border-color 0.2s; }
+    .form-group input:focus, .form-group select:focus { border-color:var(--color-primary); }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-brand">
+      <img src="assets/red_heart_logo.png" alt="Life Hope" class="heartbeat" /> Life Hope
+    </div>
+    <div class="nav-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="profile.html" style="color:var(--color-primary);">My Profile</a>
+      <a href="index.html">Logout</a>
+    </div>
+  </header>
+ 
+  <main class="profile-container">
+    <div class="profile-header">
+      <div class="avatar" id="profile-avatar">--</div>
+      <div>
+        <h1 id="profile-name-header" style="color:var(--color-primary); margin-bottom:0.25rem;">Loading...</h1>
+        <p id="profile-tagline" class="tagline" style="margin-bottom:0.75rem;">Loading profile info...</p>
+        <span style="background:hsl(215, 80%, 90%); color:hsl(215, 80%, 45%); padding:0.4rem 1rem; border-radius:20px; font-weight:700; font-size:0.85rem; display:inline-block;">Platinum Donor Member</span>
+      </div>
+    </div>
+
+    <form id="profile-form">
+      <h3 style="margin-bottom:1.5rem; color:#444;">Personal Information</h3>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="profile-name" required />
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="profile-email" required />
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" id="profile-phone" required />
+        </div>
+        <div class="form-group">
+          <label>Blood Group</label>
+          <select id="profile-blood" required>
+            <option value="" disabled selected>Select Blood Group</option>
+            <option>O Positive</option>
+            <option>O Negative</option>
+            <option>A Positive</option>
+            <option>A Negative</option>
+            <option>B Positive</option>
+            <option>B Negative</option>
+            <option>AB Positive</option>
+            <option>AB Negative</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Organs Pledged</label>
+        <input type="text" id="profile-organ" required />
+      </div>
+
+      <button type="submit" class="cta-button" style="margin-top:1.5rem; width:100%; font-size:1.1rem; padding:1rem;">Save Profile Changes</button>
+    </form>
+  </main>
+  <script type="module" src="profile.js"></script>
+</body>
+</html>

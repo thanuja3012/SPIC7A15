@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Hope – Sign Up</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script type="module" src="auth.js"></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', () => {
+      const role = localStorage.getItem('lh_role') || 'donor';
+      const dynamicFields = document.getElementById('dynamic-fields');
+      const title = document.getElementById('signup-title');
+      
+      if (role === 'donor') {
+        title.innerHTML = 'Become a Donor 🩸';
+        dynamicFields.innerHTML = `
+          <input type="text" name="fullName" placeholder="Full Name" required />
+          <input type="tel" name="phone" placeholder="Phone number" required />
+          <select name="bloodType" required>
+            <option value="" disabled selected>Select Blood Type</option>
+            <option>A+</option><option>A-</option>
+            <option>B+</option><option>B-</option>
+            <option>O+</option><option>O-</option>
+            <option>AB+</option><option>AB-</option>
+          </select>
+          <select name="organ" required>
+            <option value="" disabled selected>Select Organ to Donate</option>
+            <option>Kidney</option>
+            <option>Liver</option>
+            <option>Heart</option>
+            <option>Lung</option>
+            <option>Pancreas</option>
+            <option>Blood Only</option>
+          </select>
+        `;
+      } else if (role === 'hospital') {
+        title.innerHTML = 'Hospital Registration 🏥';
+        dynamicFields.innerHTML = `
+          <input type="text" name="hospitalName" placeholder="Hospital Name" required />
+          <input type="text" name="license" placeholder="Medical License Number" required />
+          <input type="tel" name="phone" placeholder="Contact Phone" required />
+          <input type="text" name="address" placeholder="Full Address" required />
+        `;
+      } else {
+        // Admin or fallback
+        title.innerHTML = 'Create Account';
+        dynamicFields.innerHTML = `<input type="text" name="fullName" placeholder="Full Name" required />`;
+      }
+    });
+  </script>
+</head>
+<body>
+  <div class="hero-container">
+    <div class="glass" style="max-width: 450px;">
+      <h1 class="app-title" id="signup-title">Create Account</h1>
+      <form id="signup-form" action="#" method="POST">
+        
+        <div id="dynamic-fields">
+          <!-- Filled via JavaScript based on role -->
+        </div>
+
+        <input type="email" name="email" placeholder="Email address" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <input type="password" name="confirm" placeholder="Confirm Password" required />
+        
+        <button type="submit" class="cta-button" style="margin-top: 0.5rem;">Sign Up</button>
+      </form>
+      <p class="tagline" style="margin-top:1rem;">
+        Already have an account? <a href="login.html" class="cta-button" style="background:none;color:var(--color-primary);padding:0;">Log In</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>
