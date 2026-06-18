@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Life Hope | Organ Donor Registration & Transplant Support System</title>
+  <meta name="description" content="Life Hope is an intelligent platform connecting organ donors with hospitals to save lives, offering digital donor cards, priority health benefits, and hospital search match support.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==========================================
+       NAVIGATION BAR & HEADER
+       ========================================== -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="#" class="logo-wrapper" onclick="switchView('landing')">
+        <div class="logo-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </div>
+        <span>Life Hope</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#" class="nav-link active" data-view="landing" onclick="switchView('landing')">Home</a></li>
+          <li><a href="#" class="nav-link" data-view="match" onclick="switchView('match')">Find a Match</a></li>
+          <li><a href="#" class="nav-link" data-view="register" onclick="switchView('register')">Register</a></li>
+          <li><a href="#" class="nav-link" data-view="benefits" onclick="switchView('benefits')">Benefits</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-btn" id="theme-toggle" aria-label="Toggle Dark Theme">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-sun"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <button class="btn btn-primary" id="header-cta" onclick="switchView('register')">Register Now</button>
+        
+        <div class="menu-toggle" id="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================
+         VIEW 1: LANDING / HOME VIEW
+         ========================================== -->
+    <section id="view-landing" class="app-view active">
+      <div class="hero-section">
+        <div class="container hero-grid">
+          <div class="hero-content">
+            <div class="hero-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              HIPAA Compliant & Secure System
+            </div>
+            <h1 class="hero-title">Become a <span>Lifesaver</span> today.</h1>
+            <p class="hero-desc">Your choice to register as an organ donor is a profound gift of life. Life Hope connects registered donors instantly with medical institutions to remove critical delays, while honoring your decision with real rewards.</p>
+            <div class="hero-actions">
+              <button class="btn btn-primary btn-icon-right" onclick="switchView('register')">
+                Register as a Donor
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+              <button class="btn btn-outline" onclick="switchView('match')">Transplant Portal</button>
+            </div>
+          </div>
+          
+          <div class="hero-visual">
+            <div class="hero-glow-back"></div>
+            <div class="interactive-mockup">
+              <!-- Digital Card Front Embedded in mockup -->
+              <div class="donor-card-wrapper" onclick="this.classList.toggle('flipped')">
+                <div class="donor-card-inner">
+                  <div class="donor-card-front" style="background: linear-gradient(135deg, #0d559e 0%, #06b6d4 100%)">
+                    <div class="card-mesh"></div>
+                    <div class="card-header-logo">
+                      <span class="card-logo-text">Life Hope</span>
+                      <span class="card-badge">Donor</span>
+                    </div>
+                    <div class="card-chip"></div>
+                    <div class="card-middle">
+                      <div class="card-holder-name">Jane Doe</div>
+                      <div class="card-id-num">LH-882941</div>
+                    </div>
+                    <div class="card-footer-info">
+                      <div class="card-detail-group">
+                        <span class="card-detail-label">Blood Type</span>
+                        <span class="card-detail-val">O Negative</span>
+                      </div>
+                      <div class="card-detail-group" style="text-align: right;">
+                        <span class="card-detail-label">Status</span>
+                        <span class="card-status-pill" style="background-color: var(--emerald)">Active</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="donor-card-back">
+                    <div class="card-magnetic-strip"></div>
+                    <div class="card-back-content">
+                      <div class="card-back-details">
+                        <div><strong>Organs:</strong> Heart, Kidneys, Liver</div>
+                        <div><strong>Contact:</strong> +1 (555) 019-2831</div>
+                        <div><strong>Emergency Contact:</strong> +1 (555) 998-2834</div>
+                      </div>
+                      <div class="card-qr-box">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><path d="M7 17h.01M17 17h.01M17 7h.01M7 7h.01"/></svg>
+                      </div>
+                    </div>
+                    <p class="card-instructions">In case of emergency, present this digital card to clinical coordinators immediately.</p>
+                  </div>
+                </div>
+              </div>
+              <p class="flip-guide-txt" style="margin-top: 1rem;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                Click Card to Flip
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- IMPACT AT A GLANCE -->
+      <div class="impact-section">
+        <div class="container">
+          <div class="impact-header">
+            <h2>Your impact at a glance</h2>
+            <p>Organ donation is the ultimate legacy of empathy. Just one individual decision creates ripples of hope.</p>
+          </div>
+          <div class="impact-grid">
+            <div class="impact-card">
+              <div class="impact-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <div class="impact-value">8 Lives</div>
+              <div class="impact-label">Saved by One Donor</div>
+              <p class="impact-desc">One single organ donor can save up to eight lives and improve the lives of over 75 others through tissue donation.</p>
+            </div>
+            
+            <div class="impact-card">
+              <div class="impact-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div class="impact-value">10 Mins</div>
+              <div class="impact-label">New Candidate Added</div>
+              <p class="impact-desc">Every ten minutes, another hopeful mother, father, or child is added to the national transplant waiting list.</p>
+            </div>
+            
+            <div class="impact-card">
+              <div class="impact-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <div class="impact-value">Legacy</div>
+              <div class="impact-label">An Eternal Gift</div>
+              <p class="impact-desc">Organ donation is a legacy of boundless kindness that echoes through families for generations.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BENEFITS SHOWCASE -->
+      <div class="benefits-section">
+        <div class="container benefits-grid">
+          <div class="benefits-visual">
+            <div class="benefit-glow-sphere"></div>
+            <div class="benefit-showcase-box">
+              <div style="text-align: center; margin-bottom: 2rem;">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="background-color: var(--accent-light); padding: 1rem; border-radius: 50%;"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+                <h3 style="margin-top: 1rem; font-size: 1.5rem;">Donor Wellness Package</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">Exclusive perks designed to support you as a lifesaver.</p>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 0.5rem; font-size: 0.9rem;">
+                  <span>Annual Checkups</span> <strong style="color: var(--emerald)">Free Eligible</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 0.5rem; font-size: 0.9rem;">
+                  <span>Priority Services</span> <strong style="color: var(--primary)">VIP Hospital Access</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 0.5rem; font-size: 0.9rem;">
+                  <span>Lab Diagnostics</span> <strong style="color: var(--accent)">30% Co-Pay Waiver</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="benefits-content">
+            <h2>Why Life Hope is Unique</h2>
+            <p>We believe that organ donors are national heroes. To honor and support your decision to save lives, Life Hope is partnered with leading healthcare networks to offer unparalleled care and recognition rewards.</p>
+            <div class="benefits-list">
+              <div class="benefit-item">
+                <div class="benefit-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </div>
+                <div>
+                  <h3>Free Annual Wellness Checks</h3>
+                  <p>Registered donors receive complete diagnostic profiles, basic screenings, and specialist consults every year at zero cost.</p>
+                </div>
+              </div>
+              <div class="benefit-item">
+                <div class="benefit-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </div>
+                <div>
+                  <h3>Priority Hospital & Clinical Services</h3>
+                  <p>Enjoy expedited scheduling, dedicated liaison coordinators, and priority service check-ins at partnered medical centers.</p>
+                </div>
+              </div>
+              <div class="benefit-item">
+                <div class="benefit-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+                <div>
+                  <h3>Medical Diagnostic Discounts</h3>
+                  <p>Benefit from major discounts of up to 30% on blood screenings, imaging, and regular laboratory examinations.</p>
+                </div>
+              </div>
+              <div class="benefit-item">
+                <div class="benefit-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </div>
+                <div>
+                  <h3>Recognition Certificate</h3>
+                  <p>Download your official Certificate of Recognition signed by medical boards, suitable for display or digital sharing.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         VIEW 2: STEPS REGISTRATION FORM
+         ========================================== -->
+    <section id="view-register" class="app-view">
+      <div class="reg-section container">
+        <div class="reg-grid">
+          
+          <!-- Stepper Form Card Left -->
+          <div class="reg-form-card">
+            <div class="reg-form-header">
+              <h2>Become a Lifesaver</h2>
+              <p>Your decision to register as an organ donor is a powerful act of humanity. We've simplified the process to be secure and supportive.</p>
+            </div>
+
+            <!-- Stepper Progress Tracker -->
+            <div class="stepper-nav">
+              <div class="stepper-progress" id="stepper-progress-bar"></div>
+              
+              <div class="step-node active" data-step="1">
+                <div class="step-circle">1</div>
+                <div class="step-label">Info</div>
+              </div>
+              <div class="step-node" data-step="2">
+                <div class="step-circle">2</div>
+                <div class="step-label">Medical</div>
+              </div>
+              <div class="step-node" data-step="3">
+                <div class="step-circle">3</div>
+                <div class="step-label">Selection</div>
+              </div>
+              <div class="step-node" data-step="4">
+                <div class="step-circle">4</div>
+                <div class="step-label">Consent</div>
+              </div>
+            </div>
+
+            <form id="donor-form" novalidate>
+              
+              <!-- STEP 1: Personal Information -->
+              <div class="step-content active" id="step-1-content">
+                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Personal Information</h3>
+                
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="reg-name">Full Legal Name</label>
+                    <input type="text" id="reg-name" class="form-control" placeholder="John Doe" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="reg-dob">Date of Birth</label>
+                    <input type="date" id="reg-dob" class="form-control" required>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="reg-email">Email Address</label>
+                    <input type="email" id="reg-email" class="form-control" placeholder="john@example.com" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="reg-phone">Phone Number</label>
+                    <input type="tel" id="reg-phone" class="form-control" placeholder="+1 (555) 000-0000" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="reg-address">Residential Address</label>
+                  <textarea id="reg-address" class="form-control" rows="3" placeholder="Street address, City, State, ZIP" required></textarea>
+                </div>
+
+                <div class="hipaa-alert">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  <div>
+                    <strong>HIPAA Compliance Secure Standard:</strong> Your data is encrypted and managed under strict security compliances. We only share this information with licensed transplant coordinators when medically necessary.
+                  </div>
+                </div>
+              </div>
+
+              <!-- STEP 2: Medical Preferences -->
+              <div class="step-content" id="step-2-content">
+                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Medical Details</h3>
+                
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="reg-blood">Blood Type</label>
+                    <select id="reg-blood" class="form-control" required>
+                      <option value="" disabled selected>Select blood type...</option>
+                      <option value="O Positive">O Positive (O+)</option>
+                      <option value="O Negative">O Negative (O-)</option>
+                      <option value="A Positive">A Positive (A+)</option>
+                      <option value="A Negative">A Negative (A-)</option>
+                      <option value="B Positive">B Positive (B+)</option>
+                      <option value="B Negative">B Negative (B-)</option>
+                      <option value="AB Positive">AB Positive (AB+)</option>
+                      <option value="AB Negative">AB Negative (AB-)</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="reg-emergency">Emergency Contact Phone</label>
+                    <input type="tel" id="reg-emergency" class="form-control" placeholder="+1 (555) 999-9999" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Select Organs to Donate</label>
+                  <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Choose the organs you are willing to donate. You can select all or individual ones.</p>
+                  
+                  <div class="organ-grid">
+                    <label>
+                      <input type="checkbox" class="organ-checkbox" value="Heart" checked>
+                      <div class="organ-card">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        <span>Heart</span>
+                      </div>
+                    </label>
+
+                    <label>
+                      <input type="checkbox" class="organ-checkbox" value="Kidneys" checked>
+                      <div class="organ-card">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a5 5 0 0 0-5 5v3a5 5 0 0 0 10 0V7a5 5 0 0 0-5-5zM17 12h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2zM7 12H5a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2z"/></svg>
+                        <span>Kidneys</span>
+                      </div>
+                    </label>
+
+                    <label>
+                      <input type="checkbox" class="organ-checkbox" value="Liver" checked>
+                      <div class="organ-card">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22a9 9 0 0 1-9-9c0-3.3 2.7-6 6-6s6 2.7 6 6-2.7 6-6 6zM19 8c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1z"/></svg>
+                        <span>Liver</span>
+                      </div>
+                    </label>
+
+                    <label>
+                      <input type="checkbox" class="organ-checkbox" value="Lungs">
+                      <div class="organ-card">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="12" r="5"/><circle cx="17" cy="12" r="5"/><path d="M12 2v10"/></svg>
+                        <span>Lungs</span>
+                      </div>
+                    </label>
+
+                    <label>
+                      <input type="checkbox" class="organ-checkbox" value="Pancreas">
+                      <div class="organ-card">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                        <span>Pancreas</span>
+                      </div>
+                    </label>
+
+                    <label>
+                      <input type="checkbox" class="organ-checkbox" value="Corneas">
+                      <div class="organ-card">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M3 12c4-8 14-8 18 0-4 8-14 8-18 0z"/></svg>
+                        <span>Corneas</span>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="reg-conditions">Pre-existing Health Conditions (Optional)</label>
+                  <input type="text" id="reg-conditions" class="form-control" placeholder="E.g., asthma, hypertension, etc.">
+                </div>
+              </div>
+
+              <!-- STEP 3: Benefits and Unique Support Incentives -->
+              <div class="step-content" id="step-3-content">
+                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Select Your Premium Benefits</h3>
+                <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem;">As a tokens of appreciation from Life Hope, select the services you wish to activate on your donor card.</p>
+                
+                <div class="reward-list">
+                  <label>
+                    <input type="checkbox" class="reward-checkbox" value="Free Annual Health Checkups" checked>
+                    <div class="reward-card">
+                      <div class="reward-card-checkbox">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                      </div>
+                      <div class="reward-card-content">
+                        <h4>Free Annual Health Check-Up</h4>
+                        <p>Complete clinical check-ups, diagnostic panels, and consultant reviews scheduled yearly at zero cost.</p>
+                      </div>
+                    </div>
+                  </label>
+
+                  <label>
+                    <input type="checkbox" class="reward-checkbox" value="Priority Hospital Check-ins" checked>
+                    <div class="reward-card">
+                      <div class="reward-card-checkbox">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                      </div>
+                      <div class="reward-card-content">
+                        <h4>Priority Hospital & Clinical Service</h4>
+                        <p>Dedicated queue bypassing, VIP medical liaison assistance, and expedited bookings at partnered medical networks.</p>
+                      </div>
+                    </div>
+                  </label>
+
+                  <label>
+                    <input type="checkbox" class="reward-checkbox" value="30% Medical Test Discounts">
+                    <div class="reward-card">
+                      <div class="reward-card-checkbox">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                      </div>
+                      <div class="reward-card-content">
+                        <h4>Diagnostic Test Discounts</h4>
+                        <p>Receive up to 30% co-payment discounts on laboratory testing, blood work, and advanced radiology scans.</p>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- STEP 4: Legal Consent & E-Signature -->
+              <div class="step-content" id="step-4-content">
+                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Legal Consent & Authorization</h3>
+                
+                <div style="font-size: 0.9rem; color: var(--text-muted); background: var(--bg-main); border: 1px solid var(--border-light); padding: 1.25rem; border-radius: var(--radius-md); max-height: 160px; overflow-y: scroll; margin-bottom: 1.5rem;">
+                  <p><strong>Organ Donation Authorization Agreement:</strong></p>
+                  <p style="margin-top: 0.5rem;">1. I hereby authorize the donation of any needed organs, eyes, or tissues upon my death for the purposes of transplantation, therapy, research, or education.</p>
+                  <p style="margin-top: 0.5rem;">2. I understand that this donation is a voluntary decision that is legally binding, but can be updated or revoked at any time by updating my Life Hope profile settings.</p>
+                  <p style="margin-top: 0.5rem;">3. I certify that all personal records and health details provided are truthful and accurate. I release this data to designated healthcare providers solely for placement coordinates.</p>
+                </div>
+
+                <div class="form-group">
+                  <label>Draw Your Signature</label>
+                  <div class="signature-container">
+                    <canvas class="signature-pad" id="signature-pad"></canvas>
+                    <div class="signature-controls">
+                      <span style="font-size: 0.75rem; color: var(--text-muted); display: flex; align-items: center;">Draw using cursor or touch</span>
+                      <button type="button" class="btn btn-secondary" style="padding: 0.25rem 0.75rem; font-size: 0.75rem; border-radius: 4px;" id="clear-sig">Clear Pad</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="reg-esign">Type Your Full Legal Name (Digital E-Signature)</label>
+                  <input type="text" id="reg-esign" class="form-control" placeholder="E.g., Johnathan Doe" required>
+                </div>
+
+                <label style="display: flex; gap: 0.75rem; font-weight: 500; font-size: 0.85rem; margin-top: 1rem;">
+                  <input type="checkbox" id="reg-consent" required style="width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px;">
+                  <span>I agree to the Terms of Donation and HIPAA compliant secure data sharing policies.</span>
+                </label>
+              </div>
+
+              <!-- Action Navigation Controls -->
+              <div class="form-actions">
+                <button type="button" class="btn btn-secondary" id="step-back" style="visibility: hidden;">Back</button>
+                <button type="button" class="btn btn-primary" id="step-next">Next Step</button>
+              </div>
+
+            </form>
+          </div>
+
+          <!-- Digital Card Preview Right Panel -->
+          <div class="card-sidebar">
+            <div>
+              <h3 class="sidebar-title">Card Preview</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">Observe your Official Life Hope Card render dynamically as you fill out the details. Click to view reverse specifications.</p>
+            </div>
+
+            <!-- Digital 3D Flip Card -->
+            <div class="donor-card-wrapper" id="preview-card-wrap">
+              <div class="donor-card-inner">
+                <!-- Front -->
+                <div class="donor-card-front" id="card-front-face">
+                  <div class="card-mesh"></div>
+                  <div class="card-header-logo">
+                    <span class="card-logo-text">Life Hope</span>
+                    <span class="card-badge">Donor</span>
+                  </div>
+                  <div class="card-chip"></div>
+                  <div class="card-middle">
+                    <div class="card-holder-name" id="card-name-label">JOHN DOE</div>
+                    <div class="card-id-num" id="card-id-label">LH-992841</div>
+                  </div>
+                  <div class="card-footer-info">
+                    <div class="card-detail-group">
+                      <span class="card-detail-label">Blood Type</span>
+                      <span class="card-detail-val" id="card-blood-label">O Positive</span>
+                    </div>
+                    <div class="card-detail-group" style="text-align: right;">
+                      <span class="card-detail-label">Status</span>
+                      <span class="card-status-pill" id="card-status-label">Pending Approval</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Back -->
+                <div class="donor-card-back">
+                  <div class="card-magnetic-strip"></div>
+                  <div class="card-back-content">
+                    <div class="card-back-details">
+                      <div><strong>Organs:</strong> <span id="card-organs-label">Heart, Kidneys, Liver</span></div>
+                      <div><strong>Contact:</strong> <span id="card-phone-label">+1 (555) 000-0000</span></div>
+                      <div><strong>Emergency:</strong> <span id="card-emg-label">+1 (555) 999-9999</span></div>
+                    </div>
+                    <div class="card-qr-box">
+                      <!-- Rendered SVG QR code -->
+                      <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><path d="M7 17h.01M17 17h.01M17 7h.01M7 7h.01"/></svg>
+                    </div>
+                  </div>
+                  <p class="card-instructions">Presented digital card acts as legal proof under primary transplant coordinate databases.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Flip Prompt Guide -->
+            <p class="flip-guide-txt">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+              Click Card to Flip Details
+            </p>
+
+            <!-- Support Assistance Card -->
+            <div class="assist-card">
+              <div class="assist-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <div class="assist-content">
+                <h4>Need assistance?</h4>
+                <p>Our HIPAA certified transplant assistance team is available 24/7 to resolve complex registration steps.</p>
+                <a href="mailto:support@lifehope.org" class="assist-link">
+                  Contact Advisor
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Download Badges -->
+            <div style="display: flex; gap: 0.5rem; justify-content: center; opacity: 0.5;">
+              <span style="font-size: 0.75rem;">App Store</span>
+              <span style="font-size: 0.75rem;">|</span>
+              <span style="font-size: 0.75rem;">Google Play</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         VIEW 3: INTELLECTUAL MATCH FINDER
+         ========================================== -->
+    <section id="view-match" class="app-view">
+      <div class="match-section container">
+        <div class="reg-form-header">
+          <h2>Transplant Coordinator Portal</h2>
+          <p>Instantly match patients with authorized donors. System utilizes intelligent, weighted ABO blood groups and HLA compatibility scores.</p>
+        </div>
+
+        <div class="match-grid">
+          <!-- Filters Left Card -->
+          <div class="filter-card">
+            <h3 class="filter-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+              Match Criteria
+            </h3>
+
+            <div class="form-group">
+              <label for="match-organ">Required Organ</label>
+              <select id="match-organ" class="form-control">
+                <option value="Heart">Heart</option>
+                <option value="Kidneys">Kidneys</option>
+                <option value="Liver">Liver</option>
+                <option value="Lungs">Lungs</option>
+                <option value="Pancreas">Pancreas</option>
+                <option value="Corneas">Corneas</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="match-blood">Recipient Blood Group</label>
+              <select id="match-blood" class="form-control">
+                <option value="O Positive">O Positive (O+)</option>
+                <option value="O Negative">O Negative (O-)</option>
+                <option value="A Positive">A Positive (A+)</option>
+                <option value="A Negative">A Negative (A-)</option>
+                <option value="B Positive" selected>B Positive (B+)</option>
+                <option value="B Negative">B Negative (B-)</option>
+                <option value="AB Positive">AB Positive (AB+)</option>
+                <option value="AB Negative">AB Negative (AB-)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="match-urgency">Clinical Urgency</label>
+              <select id="match-urgency" class="form-control">
+                <option value="Critical">Status 1A (Critical - 72hr limit)</option>
+                <option value="Urgent">Status 1B (Urgent)</option>
+                <option value="Stable">Status 2 (Stable / Outpatient)</option>
+              </select>
+            </div>
+
+            <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" id="find-match-btn">Analyze Matches</button>
+          </div>
+
+          <!-- Matching Results List Right -->
+          <div class="results-panel">
+            <div class="results-header">
+              <div class="results-count">Search Results: <span id="results-num">0</span> matching donors found</div>
+              <div style="font-size: 0.85rem; color: var(--text-muted);">Sorted by compatibility %</div>
+            </div>
+
+            <div id="matches-list-container">
+              <!-- Empty state initially -->
+              <div class="empty-matches">
+                <div class="empty-matches-icon">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0zM12 9v4M12 17h.01"/></svg>
+                </div>
+                <h3>No search query run yet</h3>
+                <p>Select required organ and recipient blood parameters on the filter panel, then click "Analyze Matches" to retrieve compatible donors.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         VIEW 4: BENEFITS & RECOGNITION (CERTIFICATE)
+         ========================================== -->
+    <section id="view-benefits" class="app-view">
+      <div class="rewards-section container">
+        <div class="rewards-show-grid">
+          
+          <!-- Rewards left column -->
+          <div class="rewards-intro">
+            <h2>Your Wellness Dashboard</h2>
+            <p>Welcome to your Life Hope support panel. Since you are registered as a life saver, you can claim your premium healthcare incentives below.</p>
+            
+            <div class="rewards-display-grid" id="benefits-rewards-grid">
+              <!-- If not registered -->
+              <div class="reward-item-card" style="border: 1px dashed var(--border-light); background: transparent;">
+                <div class="reward-item-icon" style="background-color: var(--primary-light); color: var(--primary);">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div class="reward-item-info">
+                  <h3>No Rewards Activated Yet</h3>
+                  <p>Your benefits will unlock automatically once you complete the donor registration form and receive your Life Hope donor card.</p>
+                  <button class="btn btn-primary" onclick="switchView('register')" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Register Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Certificate right column -->
+          <div class="cert-preview-box">
+            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-heading);">Donor Recognition Certificate</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem;">A token of national gratitude honoring your pledge to save lives.</p>
+            
+            <!-- Live Canvas Certificate Wrapper -->
+            <div class="cert-preview-container" id="cert-printable-area">
+              <div class="cert-seal">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <h4 class="cert-title">Life Hope</h4>
+              <p class="cert-sub">Certificate of Appreciation</p>
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem;">THIS CERTIFICATE IS HONOURABLY PRESENTED TO</div>
+              <div class="cert-name" id="cert-holder-name">YOUR NAME HERE</div>
+              <p class="cert-body">For noble dedication and selflessness in registering as an official organ donor, pledging to share the ultimate gift of life and health to fellow humanity.</p>
+              
+              <div class="cert-footer-row">
+                <div class="cert-sig-box">
+                  <span class="cert-sig-line" style="font-family: 'Outfit'; font-weight: 800;">Life Hope Board</span>
+                  <span>Registrar Authorization</span>
+                </div>
+                <div class="cert-sig-box" style="text-align: right;">
+                  <span class="cert-sig-line" id="cert-date-label">May 25, 2026</span>
+                  <span>Pledge Date</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Print Actions -->
+            <button class="btn btn-outline" id="print-cert-btn" style="width: 100%;" disabled>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+              Print / Save Certificate
+            </button>
+            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.75rem;">Requires active organ donor registration</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-logo-desc">
+          <div class="footer-logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" style="background-color: white; padding: 4px; border-radius: 6px;"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <span style="font-family: var(--font-heading); font-weight: 800;">Life Hope</span>
+          </div>
+          <p class="footer-desc">Connecting donors and transplant patients through premium security and real-time medical matching solutions. A digital legacy of kindness.</p>
+        </div>
+        
+        <div class="footer-links-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#" onclick="switchView('landing')">About Donation</a></li>
+            <li><a href="#" onclick="switchView('benefits')">Wellness Incentives</a></li>
+            <li><a href="#" onclick="switchView('match')">Hospital Finder</a></li>
+            <li><a href="mailto:contact@lifehope.org">Emergency Helpline</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">HIPAA Compliance</a></li>
+            <li><a href="#">Data Encryption</a></li>
+            <li><a href="#">Donor Rights</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h4>Partner Networks</h4>
+          <ul>
+            <li><a href="#">National Organ Registry</a></li>
+            <li><a href="#">Partner Hospitals</a></li>
+            <li><a href="#">Red Cross Alliance</a></li>
+            <li><a href="#">Wellness Clinicians</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Life Hope Network. Under strict Federal Healthcare Security Standards. All rights reserved.</div>
+        <div class="footer-socials">
+          <a href="#" class="social-icon" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" class="social-icon" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+          <a href="#" class="social-icon" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       TOAST ALERTS SYSTEM
+       ========================================== -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Main JavaScript Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
